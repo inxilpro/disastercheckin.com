@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SearchForPhoneNumber;
+use App\Http\Controllers\SubscribeToPhoneNumber;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -8,3 +9,4 @@ Route::get('/', function () {
 });
 
 Route::post('/search', SearchForPhoneNumber::class);
+Route::post('/subscribe', SubscribeToPhoneNumber::class)->name('subscribe');
