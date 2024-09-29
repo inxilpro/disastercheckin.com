@@ -5,6 +5,9 @@
         @csrf
         <label for="phone_number">Phone Number</label>
         <input name="phone_number" id="phone_number" type="tel" inputmode="tel" placeholder="+18285551234">
+        @error('phone_number')
+            <p style="color: red;">{{ $message }}</p>
+        @enderror
         <button type="submit">Search</button>
     </form>
 </x-app-layout>
