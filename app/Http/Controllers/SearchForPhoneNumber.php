@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\UserSearchedForPhoneNumber;
 use App\Http\Requests\SearchForPhoneNumberRequest;
-use Propaganistas\LaravelPhone\PhoneNumber;
+use Propaganistas\LaravelPhone\PhoneNumber as LaravelPhoneNumber;
 
 class SearchForPhoneNumber extends Controller
 {
@@ -12,8 +12,12 @@ class SearchForPhoneNumber extends Controller
     {
         $phoneNumber = $request->validated('phone_number');
 
-        UserSearchedForPhoneNumber::fire(
-            phone_number: (new PhoneNumber($phoneNumber, 'US'))->formatE164(),
+        $number = UserSearchedForPhoneNumber::commit(
+            phone_number: (new LaravelPhoneNumber($phoneNumber, 'US'))->formatE164(),
         );
+
+        $number->loadMissing('messages');
+
+        return view('messages', ['number' => $number]);
     }
 }
