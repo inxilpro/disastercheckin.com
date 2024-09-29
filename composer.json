@@ -9,6 +9,7 @@
         "hirethunk/verbs": "^0.6.2",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
+        "monicahq/laravel-cloudflare": "^3.7",
         "twilio/sdk": "^8.3"
     },
     "require-dev": {
