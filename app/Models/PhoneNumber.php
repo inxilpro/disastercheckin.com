@@ -10,6 +10,9 @@ class PhoneNumber extends Model
 {
     use HasFactory;
 
+    // Note: could cast `phone` here with Laravel-Phone if useful
+    // @see https://github.com/Propaganistas/Laravel-Phone#attribute-casting
+
     public function messages(): HasMany
     {
         return $this->hasMany(Message::class);
