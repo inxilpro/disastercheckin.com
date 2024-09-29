@@ -8,5 +8,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/search', SearchForPhoneNumber::class);
+
+Route::post('/search', SearchForPhoneNumber::class)->name('search');
 Route::post('/subscribe', SubscribeToPhoneNumber::class)->name('subscribe');
