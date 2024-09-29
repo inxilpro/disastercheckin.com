@@ -14,8 +14,8 @@ class TwilioWebhookController extends Controller
         TwilioWebhookReceived::fire(payload: $request->input());
 
         $response = new MessagingResponse();
-        $response->message('WIP');
+        $response->message('Message logged.');
 
-        return response($response);
+        return response($response, 200, ['Content-Type' => 'text/xml']);
     }
 }
