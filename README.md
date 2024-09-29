@@ -24,14 +24,14 @@ From Daniel Coulbourne:
 >
 > SEARCH:
 > SMS message like this
-> Search 8285550000
-> 
+> Search 8288880440
+>
 > Searches DB for that phone number.
 > If found:
 > Found Daniel Coulbourne
 > "I am safe. No power no cell service. Plenty of food, water and propane."
 >
 > If not found:
-> No update from 8285550000. Respond YES to be notified if they submit an update.
-> 
+> No update from 8288880440. Respond YES to be notified if they submit an update.
+>
 > It would be good to have a web search as well, and we should have a confirmation flow for your first update saying "this information will be public to anyone who knows your phone number so don't share anything you don't want publicly available."
