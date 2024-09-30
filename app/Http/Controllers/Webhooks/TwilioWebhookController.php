@@ -49,7 +49,7 @@ class TwilioWebhookController extends Controller
 
         return response(
             content: (string) $result,
-            headers: ['Content-Type' => 'application/xml'],
+            headers: ['Content-Type' => 'text/xml'],
         );
     }
 }

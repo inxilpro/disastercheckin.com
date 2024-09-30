@@ -36,6 +36,9 @@ class CheckedInViaSms extends Event
 
         $phone_number->update(['is_opted_out' => false]);
 
-        return $phone_number->check_ins()->create(['body' => $this->update]);
+        return $phone_number->check_ins()->updateOrCreate(
+            attributes: ['id' => $this->id],
+            values: ['body' => $this->update],
+        );
     }
 }
