@@ -1,10 +1,12 @@
 <x-app-layout>
 
-    <div class="prose">
-        <p>If you are looking for information on a loved one, they may have checked in with us. We have provided a phone
+    <div class="prose-sm max-w-lg">
+        <p>
+            If you are looking for information on a loved one, they may have checked in with us. We have provided a phone
             number to local media where people can send SMS updates about their well-being. You can search for your
             loved on
-            by your user's phone number below:</p>
+            by your user's phone number below:
+        </p>
     </div>
 
     <form
@@ -24,12 +26,12 @@
                 inputmode="tel"
                 placeholder="eg. 828-555-1234"
             />
-        </div>
 
-        <div class="mt-2">
-            <x-button type="submit" size="lg">
-                Search
-            </x-button>
+            <div class="mt-4 flex justify-end">
+                <x-button type="submit" size="lg">
+                    Search
+                </x-button>
+            </div>
         </div>
     </form>
 

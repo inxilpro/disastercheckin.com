@@ -22,8 +22,8 @@
                 'name' => $name,
                 'value' => old($name),
                 'class' => Arr::toCssClasses([
-                    'block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset  focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6',
-                    'text-gray-900 ring-gray-300 placeholder:text-gray-400 focus:ring-indigo-600' => !$errors->has($name),
+                    'block w-full rounded-md border-0 py-2.5 shadow-sm ring-1 ring-gray-300 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6',
+                    'text-gray-900 ring-gray-300 placeholder:text-gray-400 focus:ring-blue-600/70' => !$errors->has($name),
                     'pr-10 text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-500' => $errors->has($name),
                 ])
             ]) }}
