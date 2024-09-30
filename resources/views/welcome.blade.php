@@ -1,10 +1,18 @@
 <x-app-layout>
 
-    <div class="prose">
-        <p>If you are looking for information on a loved one, they may have checked in with us. We have provided a phone
+    <div class="border rounded-md border-amber-600 px-4 py-2.5 bg-yellow-50 shadow-sm">
+        <h2 class="text-amber-900">
+            Text this number if you are safe <strong class="whitespace-nowrap">(828) 888-0440</strong>
+        </h2>
+    </div>
+
+    <div class="prose-sm max-w-lg mt-6">
+        <p>
+            If you are looking for information on a loved one, they may have checked in with us. We have provided a phone
             number to local media where people can send SMS updates about their well-being. You can search for your
             loved on
-            by your user's phone number below:</p>
+            by your user's phone number below:
+        </p>
     </div>
 
     <form
@@ -25,32 +33,11 @@
                 placeholder="eg. 828-555-1234"
             />
 
-            <div class="my-6 border rounded p-4">
-                <h2 class="text-sm font-semibold text-slate-500">
-                    Optional
-                </h2>
-
-                <p class="mt-2">
-                    <label for="email">
-                        If you would like to receive future updates from this number, you may enter
-                        your email address below.
-                    </label>
-                </p>
-
-                <x-input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="eg. you@gmail.com"
-                />
+            <div class="mt-4 flex justify-end">
+                <x-button type="submit" size="lg">
+                    Search
+                </x-button>
             </div>
-
-        </div>
-
-        <div class="mt-2">
-            <x-button type="submit" size="xl">
-                Search
-            </x-button>
         </div>
     </form>
 

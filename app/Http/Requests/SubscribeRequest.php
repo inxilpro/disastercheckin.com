@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SearchRequest extends FormRequest
+class SubscribeRequest extends FormRequest
 {
     public function rules(): array
     {
@@ -13,6 +13,11 @@ class SearchRequest extends FormRequest
                 'required',
                 'string',
                 'phone:US',
+            ],
+            'email' => [
+                'required',
+                'string',
+                'email',
             ],
         ];
     }

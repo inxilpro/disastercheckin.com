@@ -4,20 +4,67 @@
         <meta name="robots" content="noindex"/>
     </x-slot:head>
 
-    <div class="prose">
-        <h1>
-            Check-ins from {{ $phone_number }}
-        </h1>
+    <div>
 
-        @forelse($phone_number->check_ins as $check_in)
-            <p>{{ $check_in->created_at->diffForHumans() }} - {{ $check_in->body }}</p>
-        @empty
-            <p>
-                We do not have any messages from {{ $phone_number }} yet.
-                Check back again in 24 hours—we hope to add the ability to
-                subscribe for updates shortly.
+        <h2 class="text-lg text-slate-800 font-semibold tracking-tight border-b border-slate-300">
+            Check-ins from {{ $phone_number }}
+        </h2>
+
+        @if($latest_check_in)
+
+            <h3 class="text-lg mt-8 font-semibold flex justify-between items-center">
+                <span class="text-slate-800 tracking-tight">
+                    Latest
+                </span>
+                <span class="font-semibold text-slate-700 text-sm">
+                    {{ $latest_check_in->created_at->diffForHumans() }}
+                </span>
+            </h3>
+
+            <div class="mt-2 px-4 py-2 ring-1 ring-gray-300 rounded bg-slate-50/30 shadow-sm">
+                {{ $latest_check_in->body }}
+            </div>
+
+            <x-subscribe-form :phone_number="$phone_number"/>
+
+            @if($check_ins->isNotEmpty())
+
+                <h3 class="text-lg mt-8 text-slate-800 font-semibold tracking-tight">
+                    History
+                </h3>
+
+                <table class="text-sm">
+                    <thead class="sr-only">
+                    <tr>
+                        <th>Time</th>
+                        <th>Message</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($check_ins as $check_in)
+                        <tr>
+                            <td class="font-semibold text-slate-700 py-1 pr-2">
+                                {{ $check_in->created_at->diffForHumans() }}
+                            </td>
+                            <td class="py-1">
+                                {{ $check_in->body }}
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+
+            @endif
+
+        @else
+
+            <p class="mt-6">
+                We do not have any messages from this number yet. Check back again in 24 hours.
             </p>
-        @endforelse
+
+            <x-subscribe-form :phone_number="$phone_number"/>
+
+        @endif
     </div>
 
 </x-app-layout>
