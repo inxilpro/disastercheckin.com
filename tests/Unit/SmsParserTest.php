@@ -3,6 +3,9 @@
 use App\Parser\SmsCommandType;
 
 test('Creates a command', function () {
+    /*
+     * Provided by Chris as the Twillio data format
+     */
     $sms_message = [
         "ToCountry" => "US",
         "ToState" => "NC",
