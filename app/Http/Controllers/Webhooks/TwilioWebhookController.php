@@ -18,7 +18,7 @@ class TwilioWebhookController extends Controller
         $phone_number = $request->input('From');
         $sms = SmsParser::parse($request->input('Body'));
 
-        Log::info("Received '{$sms->command}' command with '{$sms->message}' from {$phone_number}");
+        Log::info("Received '{$sms->command->value}' command with '{$sms->message}' from {$phone_number}");
 
         return match ($sms->command) {
             SmsCommandType::Update => CheckedInViaSms::commit($phone_number, $sms->message, $request->all()),
