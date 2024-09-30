@@ -11,7 +11,7 @@
         Notify me
     </div>
 
-    <p class="text-sm">
+    <p class="text-sm mt-2">
         If you would like to receive a notification when this number checks in, you can provide your email address
         below.
     </p>

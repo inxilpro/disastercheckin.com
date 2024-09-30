@@ -4,15 +4,15 @@
         <meta name="robots" content="noindex"/>
     </x-slot:head>
 
-    <div>
+    <div class="mt-6">
 
-        <h2 class="text-lg text-slate-800 font-semibold tracking-tight border-b border-slate-300">
+        <h2 class="text-xl text-slate-800 font-semibold tracking-tight border-b border-slate-300 pb-2">
             Check-ins from {{ $phone_number }}
         </h2>
 
         @if($latest_check_in)
 
-            <h3 class="text-lg mt-8 font-semibold flex justify-between items-center">
+            <h3 class="text-lg mt-6 font-semibold flex justify-between items-center">
                 <span class="text-slate-800 tracking-tight">
                     Latest
                 </span>
@@ -22,7 +22,7 @@
             </h3>
 
             <div
-                class="mt-2 px-4 py-2 ring-1 ring-green-500 rounded-r rounded-bl bg-green-300/30 text-green-900 font-bold shadow-sm">
+                class="mt-2 px-4 py-2 ring-1 ring-green-500 rounded-md bg-green-200/30 text-green-900 font-medium shadow-sm">
                 {{ $latest_check_in->body }}
             </div>
 
@@ -30,7 +30,7 @@
 
             @if($check_ins->isNotEmpty())
 
-                <h3 class="text-lg mt-8 text-slate-800 font-semibold tracking-tight">
+                <h3 class="text-lg mt-6 text-slate-800 font-semibold tracking-tight">
                     Previous Check-ins
                 </h3>
 
@@ -44,10 +44,10 @@
                     <tbody>
                     @foreach($check_ins as $check_in)
                         <tr>
-                            <td class="font-semibold text-slate-700 py-1 pr-2">
+                            <td class="font-semibold text-slate-700 py-1 pr-2 whitespace-nowrap align-top pr-2">
                                 {{ $check_in->created_at->diffForHumans() }}
                             </td>
-                            <td class="py-1">
+                            <td class="py-1 pl-2">
                                 {{ $check_in->body }}
                             </td>
                         </tr>
