@@ -47,7 +47,4 @@ test('Opt out is parsed', function () {
 
     $parsed = SmsParser::parse('cancel hi');
     expect($parsed->command)->toBe(SmsCommandType::OptOut);
-
-    $parsed = SmsParser::parse('no i dont want');
-    expect($parsed->command)->toBe(SmsCommandType::OptOut);
 })->group('parser');

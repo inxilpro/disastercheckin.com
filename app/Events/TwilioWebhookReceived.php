@@ -8,7 +8,5 @@ class TwilioWebhookReceived extends Event
 {
     public function __construct(
         public array $payload,
-    )
-    {
-    }
+    ) {}
 }
