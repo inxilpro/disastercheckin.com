@@ -20,6 +20,10 @@ test('Update command is parsed', function () {
     $parsed = SmsParser::parse("UpDaTe i'm doing alright");
     expect($parsed->command)->toBe(SmsCommandType::Update);
 
+    $parsed = SmsParser::parse("update: i'm doing alright");
+    expect($parsed->command)->toBe(SmsCommandType::Update)
+        ->and($parsed->message)->toBe("i'm doing alright");
+
     $parsed = SmsParser::parse("UPDATEi'm doing alright");
     expect($parsed->command)->toBe(SmsCommandType::Update)
         ->and($parsed->message)->toBe("i'm doing alright");

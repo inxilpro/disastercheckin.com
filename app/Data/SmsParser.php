@@ -27,7 +27,7 @@ class SmsParser
             ->map(fn ($prefix) => preg_quote($prefix, '/'))
             ->implode('|');
 
-        preg_match('/^\s*(?P<command>'.$prefixes.')?\s*(?P<message>.*)\s*$/i', $body, $matches);
+        preg_match('/^\s*(?P<command>'.$prefixes.')?:?\s*(?P<message>.*)\s*$/i', $body, $matches);
 
         return [
             strtolower($matches['command']),
