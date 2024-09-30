@@ -34,6 +34,7 @@ class PhoneNumber extends Model
     {
         return [
             'value' => E164PhoneNumberCast::class.':US',
+            'is_opted_out' => 'bool',
         ];
     }
 

@@ -32,8 +32,10 @@ class CheckedInViaSms extends Event
 
     public function handle()
     {
-        return PhoneNumber::findByValueOrCreate($this->phone_number)
-            ->check_ins()
-            ->create(['body' => $this->update]);
+        $phone_number = PhoneNumber::findByValueOrCreate($this->phone_number);
+
+        $phone_number->update(['is_opted_out' => false]);
+
+        return $phone_number->check_ins()->create(['body' => $this->update]);
     }
 }

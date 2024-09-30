@@ -14,7 +14,7 @@ class TwilioSignatureMiddleware
     {
         [$signature, $url, $data] = $this->parse($request);
 
-        if (App::isLocal() || $this->validator()->validate($signature, $url, $data)) {
+        if (! App::isProduction() || $this->validator()->validate($signature, $url, $data)) {
             return $next($request);
         }
 

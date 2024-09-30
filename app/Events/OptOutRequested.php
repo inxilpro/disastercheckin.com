@@ -28,6 +28,7 @@ class OptOutRequested extends Event
     {
         if ($phone_number = PhoneNumber::findByValue($this->phone_number)) {
             $phone_number->check_ins()->delete();
+            $phone_number->update(['is_opted_out' => true]);
         }
 
         return true;
