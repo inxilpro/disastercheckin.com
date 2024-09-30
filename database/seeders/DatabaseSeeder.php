@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $carpet = PhoneNumber::factory()->create([
-            'phone' => '+18005882300',
+            'value' => '+18005882300',
         ]);
         CheckIn::factory()->create([
             'phone_number_id' => $carpet->id,

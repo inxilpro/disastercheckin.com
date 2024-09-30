@@ -18,7 +18,7 @@ class PhoneNumberFactory extends Factory
     public function definition(): array
     {
         return [
-            'phone' => fake()->e164PhoneNumber(),
+            'value' => fake()->e164PhoneNumber(),
         ];
     }
 }
