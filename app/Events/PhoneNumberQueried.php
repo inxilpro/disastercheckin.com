@@ -4,7 +4,9 @@ namespace App\Events;
 
 use App\Data\SmsCommand;
 use App\Models\PhoneNumber;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Propaganistas\LaravelPhone\PhoneNumber as BasePhoneNumber;
 use Thunk\Verbs\Event;
 
@@ -20,21 +22,14 @@ class PhoneNumberQueried extends Event
                 ->trim()
                 ->explode(' ')
                 ->filter(fn ($token) => (new BasePhoneNumber($token, 'US'))->isValid())
-                ->first() ?? '',
+                ->first(),
         );
 
+        // TODO: We may need to account for SMS length limits here
         if ($check_in = $found->check_ins()->latest()->first()) {
-            $timestamp = "{$check_in->created_at->diffForHumans()}:";
-            $message = $check_in->body;
-            $overflow = strlen($timestamp) + strlen($message) - 160;
-
-            if($overflow > 0) {
-                $message = substr($message, 0, strlen($message) - $overflow - 3) . '...';
-            }
-
             return implode(' ', [
-                $timestamp,
-                $message,
+                "From {$found->value} {$check_in->created_at->diffForHumans()}:",
+                $check_in->body,
             ]);
         }
 
