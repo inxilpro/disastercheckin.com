@@ -25,6 +25,11 @@ class PhoneNumber extends Model
         return static::where('value', e164($value, $country))->firstOrFail();
     }
 
+    public static function findByValueOrCreate(string $value, string $country = 'US'): static
+    {
+        return static::firstOrCreate(['value' => e164($value, $country)]);
+    }
+
     protected function casts(): array
     {
         return [
@@ -34,7 +39,7 @@ class PhoneNumber extends Model
 
     public function check_ins(): HasMany
     {
-        return $this->hasMany(CheckIn::class)->chaperone();
+        return $this->hasMany(CheckIn::class)->chaperone('phone_number');
     }
 
     public function getRouteKeyName()
