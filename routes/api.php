@@ -5,4 +5,5 @@ use App\Http\Middleware\TwilioSignatureMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/webhooks/twilio', TwilioWebhookController::class)
-    ->middleware(TwilioSignatureMiddleware::class);
+    ->middleware(TwilioSignatureMiddleware::class)
+    ->name('webhooks.twilio');
