@@ -14,8 +14,8 @@ return new class extends Migration
 
         Schema::create('phone_numbers', function (Blueprint $table) {
             $table->snowflakeId();
-            $table->string('value', 12);
-            $table->boolean('is_opted_out')->after('phone')->default(false);
+            $table->string('value', 12)->unique();
+            $table->boolean('is_opted_out')->default(false);
             $table->timestamps();
         });
 

@@ -10,6 +10,7 @@
     >
     <link rel="stylesheet" href="css/pico.min.css">
     <title>Disaster Check-In Search</title>
+    {{ $head ?? null }}
 </head>
 <body>
 <main class="container">

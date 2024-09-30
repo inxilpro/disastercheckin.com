@@ -17,7 +17,7 @@ class TwilioResponse extends Response
     }
 
     public function __construct(
-        protected MessagingResponse $response,
+        public MessagingResponse $response,
     ) {
         parent::__construct(
             content: (string) $response,

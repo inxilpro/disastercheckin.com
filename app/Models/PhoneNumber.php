@@ -23,4 +23,9 @@ class PhoneNumber extends Model
     {
         return $this->hasMany(CheckIn::class);
     }
+
+    public function getRouteKeyName()
+    {
+        return 'value';
+    }
 }
