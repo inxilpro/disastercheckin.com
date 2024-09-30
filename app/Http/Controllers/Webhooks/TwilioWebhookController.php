@@ -21,8 +21,15 @@ class TwilioWebhookController extends Controller
         Log::info("Received '{$sms->command->value}' command with '{$sms->message}' from {$phone_number}");
 
         return match ($sms->command) {
-            SmsCommandType::Update => CheckedInViaSms::commit($phone_number, $sms->message, $request->all()),
-            SmsCommandType::OptOut => OptOutRequested::commit($phone_number, $request->all()),
+            SmsCommandType::Update => CheckedInViaSms::commit(
+                phone_number: $phone_number,
+                update: $sms->message,
+                payload: $request->all(),
+            ),
+            SmsCommandType::OptOut => OptOutRequested::commit(
+                phone_number: $phone_number,
+                payload: $request->all(),
+            ),
             default => TwilioResponse::make()->message('Please start your message with the word "UPDATE" (eg. UPDATE I am doing OK!)'),
         };
     }
