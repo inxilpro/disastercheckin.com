@@ -4,6 +4,7 @@ use App\Data\SmsCommandType;
 use App\Data\SmsParser;
 use App\Events\CheckedInViaSms;
 use App\Events\OptOutRequested;
+use App\Events\PhoneNumberQueried;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schedule;
 use Propaganistas\LaravelPhone\PhoneNumber;
@@ -25,6 +26,9 @@ Artisan::command('sms', function () {
             phone_number: $phone_number,
             update: $command->message,
             payload: $synthetic_payload,
+        ),
+        SmsCommandType::Search => PhoneNumberQueried::commit(
+            phone_number: $phone_number,
         ),
         SmsCommandType::OptOut => OptOutRequested::commit(
             phone_number: $phone_number,
