@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends Factory<CheckIn>
  */
-class MessageFactory extends Factory
+class CheckInFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,7 +20,7 @@ class MessageFactory extends Factory
     {
         return [
             'phone_number_id' => PhoneNumber::factory(),
-            'message' => fake()->paragraphs(2, true),
+            'body' => fake()->sentence(),
         ];
     }
 }
