@@ -15,7 +15,7 @@ return [
     */
 
     'twilio' => [
-        'auth_token' => env('TWILIO_AUTH_TOKEN',  ''),
+        'auth_tokens' => explode(',', env('TWILIO_AUTH_TOKENS', env('TWILIO_AUTH_TOKEN', ''))),
     ],
 
     'postmark' => [

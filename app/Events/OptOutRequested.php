@@ -2,11 +2,24 @@
 
 namespace App\Events;
 
-use App\Http\Responses\TwilioResponse;
+use App\Data\SmsCommand;
+use App\Models\PhoneNumber;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Thunk\Verbs\Event;
 
 class OptOutRequested extends Event
 {
+    public static function webhook(Request $request, SmsCommand $command): string
+    {
+        static::commit(
+            phone_number: $request->input('From'),
+            payload: $request->all(),
+        );
+
+        return 'Any updates you have sent will be removed from disastercheckin.com shortly.';
+    }
+
     public function __construct(
         public string $phone_number,
         public array $payload,
@@ -14,7 +27,13 @@ class OptOutRequested extends Event
 
     public function handle()
     {
-        return TwilioResponse::make()
-            ->message('Any public messages that you have posted will be removed shortly!');
+        if ($phone_number = PhoneNumber::findByValue($this->phone_number)) {
+            $phone_number->check_ins()->delete();
+            $phone_number->update(['is_opted_out' => true]);
+
+            Cache::forget("phone-number-view:{$phone_number->value}");
+        }
+
+        return true;
     }
 }

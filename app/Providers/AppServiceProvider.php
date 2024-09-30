@@ -18,5 +18,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Blade::stringable(PhoneNumber::class, fn (PhoneNumber $phone_number) => $phone_number->value->formatNational());
+
+        require_once __DIR__.'/../helpers.php';
     }
 }

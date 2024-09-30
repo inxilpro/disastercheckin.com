@@ -8,4 +8,9 @@ class SmsCommand
         public SmsCommandType $command,
         public string $message,
     ) {}
+
+    public function __toString(): string
+    {
+        return "'{$this->command->value}' command with message '{$this->message}'";
+    }
 }

@@ -2,21 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\UserRequestedNotificationsOnNumber;
-use Illuminate\Http\Request;
+use App\Events\SubscribedToPhoneNumber;
+use App\Http\Requests\SubscribeRequest;
 
 class SubscribeController extends Controller
 {
-    public function __invoke(Request $request)
+    public function __invoke(SubscribeRequest $request)
     {
-        $request->validate([
-            'searcher_phone_number' => 'required',
-            'searchee_phone_number' => 'required',
-        ]);
-
-        UserRequestedNotificationsOnNumber::fire(
-            searcher_phone_number: $request->searcher_phone_number,
-            searchee_phone_number: $request->searchee_phone_number,
+        $phone_number = SubscribedToPhoneNumber::commit(
+            phone_number: $request->validated('phone_number'),
+            email: $request->validated('email'),
         );
+
+        session()->flash('message.success', 'You will be notified when this person checks in.');
+
+        return to_route('phone-number', $phone_number);
     }
 }

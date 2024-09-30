@@ -4,7 +4,7 @@ namespace App\Data;
 
 class SmsParser
 {
-    protected const PREFIXES = ['update', 'help', 'stop', 'no', 'cancel'];
+    protected const PREFIXES = ['update', 'search', 'help', 'stop', 'cancel'];
 
     public static function parse(string $body): SmsCommand
     {
@@ -13,8 +13,9 @@ class SmsParser
         return new SmsCommand(
             command: match ($prefix) {
                 'update' => SmsCommandType::Update,
+                'search' => SmsCommandType::Search,
                 'help' => SmsCommandType::Help,
-                'stop', 'no', 'cancel' => SmsCommandType::OptOut,
+                'stop', 'cancel' => SmsCommandType::OptOut,
                 default => SmsCommandType::Invalid,
             },
             message: $message,
@@ -30,8 +31,8 @@ class SmsParser
         preg_match('/^\s*(?P<command>'.$prefixes.')?:?\s*(?P<message>.*)\s*$/i', $body, $matches);
 
         return [
-            strtolower($matches['command']),
-            $matches['message'],
+            strtolower($matches['command'] ?? ''),
+            $matches['message'] ?? '',
         ];
     }
 }
