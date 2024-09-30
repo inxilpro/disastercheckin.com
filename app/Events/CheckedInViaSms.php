@@ -6,7 +6,7 @@ use App\Http\Responses\TwilioResponse;
 use App\Models\PhoneNumber;
 use Thunk\Verbs\Event;
 
-class UpdateShared extends Event
+class CheckedInViaSms extends Event
 {
     public function __construct(
         public string $phone_number,
