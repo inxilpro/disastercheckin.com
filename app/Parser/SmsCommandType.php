@@ -5,7 +5,7 @@ namespace App\Parser;
 enum SmsCommandType: string
 {
     /**
-     * User provides an update to the service
+     * User provides a status update
      */
     case Update = 'update';
 
@@ -15,7 +15,7 @@ enum SmsCommandType: string
     case Help = 'help';
 
     /**
-     * User requests the help menu
+     * User requests to opt out
      */
     case OptOut = 'optout';
 
