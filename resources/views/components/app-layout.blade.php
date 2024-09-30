@@ -19,11 +19,17 @@
 </div>
 
 <footer class="mt-8 max-w-xl mx-auto text-right flex justify-center">
-    <ul class="text-slate-600 hover:opacity-70 text-sm">
+    <ul class="text-slate-600 flex gap-4 text-sm">
         <li>
             <a href="https://twitter.com/intent/tweet?text=Text%20this%20number%20if%20you%20are%20safe%20%28828%29%20888-0440"
-               class="flex gap-1.5">
+               class="flex gap-1.5 hover:opacity-70">
                 Spread the word on Twitter
+            </a>
+        </li>
+        <li>
+            <a href="https://app.cartamaps.com/share/21920abf-7a5a-4691-a03a-56a6c52198ac"
+               class="flex gap-1.5 hover:opacity-70">
+                Check Road Closures
             </a>
         </li>
     </ul>
