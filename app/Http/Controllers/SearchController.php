@@ -11,7 +11,6 @@ class SearchController extends Controller
     {
         $phone_number = PhoneNumberQueried::commit(
             phone_number: $request->validated('phone_number'),
-            email: $request->validated('email'),
         );
 
         // TODO: Rate limit this
