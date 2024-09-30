@@ -12,15 +12,30 @@ class TwilioSignatureMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
+        if ($this->isValid($request)) {
+            return $next($request);
+        }
+
+        abort(401, 'Invalid signature.');
+    }
+
+    protected function isValid(Request $request): bool
+    {
+        if (! App::isProduction()) {
+            return true;
+        }
+
         [$signature, $url, $data] = $this->parse($request);
 
-        if (! App::isProduction() || $this->validator()->validate($signature, $url, $data)) {
-            return $next($request);
+        foreach (config()->array('services.twilio.auth_tokens') as $token) {
+            if ((new RequestValidator(trim($token)))->validate($signature, $url, $data)) {
+                return true;
+            }
         }
 
         Log::warning("Invalid Twilio signature: '{$signature}'");
 
-        abort(401, 'Invalid signature.');
+        return false;
     }
 
     protected function parse(Request $request): array
@@ -30,10 +45,5 @@ class TwilioSignatureMiddleware
             $request->fullUrl(),
             $request->has('bodySHA256') ? $request->getContent() : $request->post(),
         ];
-    }
-
-    protected function validator(): RequestValidator
-    {
-        return new RequestValidator(config('services.twilio.auth_token'));
     }
 }
