@@ -10,7 +10,8 @@ class SearchController extends Controller
     public function __invoke(SearchRequest $request)
     {
         $phone_number = PhoneNumberQueried::commit(
-            phone_number: $request->input('phone_number')
+            phone_number: $request->validated('phone_number'),
+            email: $request->validated('email'),
         );
 
         // TODO: Rate limit this

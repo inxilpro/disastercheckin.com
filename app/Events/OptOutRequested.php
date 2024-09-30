@@ -16,10 +16,7 @@ class OptOutRequested extends Event
             payload: $request->all(),
         );
 
-        return implode(' ', [
-            'Your phone number and any updates you have sent will be',
-            'removed from disastercheckin.com shortly.',
-        ]);
+        return 'Any updates you have sent will be removed from disastercheckin.com shortly.';
     }
 
     public function __construct(
@@ -31,7 +28,6 @@ class OptOutRequested extends Event
     {
         if ($phone_number = PhoneNumber::findByValue($this->phone_number)) {
             $phone_number->check_ins()->delete();
-            $phone_number->delete();
         }
 
         return true;

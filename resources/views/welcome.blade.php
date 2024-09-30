@@ -24,10 +24,31 @@
                 inputmode="tel"
                 placeholder="eg. 828-555-1234"
             />
+
+            <div class="my-6 border rounded p-4">
+                <h2 class="text-sm font-semibold text-slate-500">
+                    Optional
+                </h2>
+
+                <p class="mt-2">
+                    <label for="email">
+                        If you would like to receive future updates from this number, you may enter
+                        your email address below.
+                    </label>
+                </p>
+
+                <x-input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="eg. you@gmail.com"
+                />
+            </div>
+
         </div>
 
         <div class="mt-2">
-            <x-button type="submit" size="lg">
+            <x-button type="submit" size="xl">
                 Search
             </x-button>
         </div>
