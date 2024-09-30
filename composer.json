@@ -10,6 +10,7 @@
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
         "monicahq/laravel-cloudflare": "^3.7",
+        "propaganistas/laravel-phone": "^5.3",
         "twilio/sdk": "^8.3"
     },
     "require-dev": {
