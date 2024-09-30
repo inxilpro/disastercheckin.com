@@ -7,6 +7,7 @@ use App\Data\SmsParser;
 use App\Events\CheckedInViaSms;
 use App\Events\OptOutRequested;
 use App\Events\PhoneNumberQueried;
+use App\Events\TwilioWebhookReceived;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
@@ -20,6 +21,8 @@ class TwilioWebhookController extends Controller
 {
     public function __invoke(Request $request)
     {
+        TwilioWebhookReceived::fire(payload: $request->all());
+
         $phone_number = $request->input('From');
         $command = SmsParser::parse($request->input('Body'));
 
