@@ -5,7 +5,7 @@ namespace App\Events;
 use App\Data\SmsCommand;
 use App\Models\PhoneNumber;
 use Illuminate\Http\Request;
-use Propaganistas\LaravelPhone\PhoneNumber as BasePhoneNumber;
+use Illuminate\Support\Str;
 use Thunk\Verbs\Event;
 
 /** @method static PhoneNumber commit(string $phone_number) */
@@ -15,27 +15,18 @@ class PhoneNumberQueried extends Event
 
     public static function webhook(Request $request, SmsCommand $command): string
     {
+        // TODO: Account for numbers with spaces :/
+
         $found = static::commit(
             phone_number: str($command->message)
                 ->trim()
                 ->explode(' ')
-                ->filter(fn ($token) => (new BasePhoneNumber($token, 'US'))->isValid())
+                ->filter(fn ($word) => phone_number($word)->isValid())
                 ->first() ?? '',
         );
 
         if ($check_in = $found->check_ins()->latest()->first()) {
-            $timestamp = "{$check_in->created_at->diffForHumans()}:";
-            $message = $check_in->body;
-            $overflow = strlen($timestamp) + strlen($message) - 160;
-
-            if($overflow > 0) {
-                $message = substr($message, 0, strlen($message) - $overflow - 3) . '...';
-            }
-
-            return implode(' ', [
-                $timestamp,
-                $message,
-            ]);
+            return Str::limit("[{$check_in->created_at->diffForHumans()}] {$check_in->body}", 160);
         }
 
         return implode(' ', [
@@ -47,7 +38,7 @@ class PhoneNumberQueried extends Event
     public function validate()
     {
         $this->assert(
-            assertion: (new BasePhoneNumber($this->phone_number, 'US'))->isValid(),
+            assertion: phone_number($this->phone_number)->isValid(),
             message: 'The phone number you searched for does not appear to be valid.',
         );
     }

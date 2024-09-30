@@ -13,6 +13,7 @@ class PhoneNumberController extends Controller
         $e164 = e164($phone_number);
         $cached = true;
 
+        /** @var PhoneNumber $phone_number */
         $phone_number = Cache::remember("phone-number-view:{$e164}", now()->addHour(), function () use ($e164, &$cached) {
             $cached = false;
 
@@ -20,7 +21,12 @@ class PhoneNumberController extends Controller
                 ->loadMissing(['check_ins' => fn (Builder $query) => $query->latest()->limit(10)]);
         });
 
-        $view = view('phone-number', ['phone_number' => $phone_number]);
+        $view = view('phone-number', [
+            'phone_number' => $phone_number,
+            'has_check_ins' => $phone_number->check_ins->isNotEmpty(),
+            'check_ins' => $phone_number->check_ins,
+            'latest_check_in' => $phone_number->check_ins->shift(),
+        ]);
 
         return response((string) $view, headers: ['X-Cache-Hit' => $cached])
             ->setMaxAge(120)
