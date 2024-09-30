@@ -44,10 +44,10 @@
                     <tbody>
                     @foreach($check_ins as $check_in)
                         <tr>
-                            <td class="font-semibold text-slate-700 py-1 pr-2">
+                            <td class="font-semibold text-slate-700 py-1 pr-2 whitespace-nowrap align-top pr-2">
                                 {{ $check_in->created_at->diffForHumans() }}
                             </td>
-                            <td class="py-1">
+                            <td class="py-1 pl-2">
                                 {{ $check_in->body }}
                             </td>
                         </tr>
