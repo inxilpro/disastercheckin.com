@@ -27,8 +27,9 @@ Artisan::command('sms', function () {
             update: $command->message,
             payload: $synthetic_payload,
         ),
-        SmsCommandType::Search => PhoneNumberQueried::commit(
-            phone_number: $phone_number,
+        SmsCommandType::Search => PhoneNumberQueried::webhook(
+            request: new \Illuminate\Http\Request(),
+            command: $command,
         ),
         SmsCommandType::OptOut => OptOutRequested::commit(
             phone_number: $phone_number,
