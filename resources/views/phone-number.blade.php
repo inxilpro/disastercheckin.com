@@ -4,15 +4,15 @@
         <meta name="robots" content="noindex"/>
     </x-slot:head>
 
-    <div>
+    <div class="mt-6">
 
-        <h2 class="text-lg text-slate-800 font-semibold tracking-tight border-b border-slate-300">
+        <h2 class="text-xl text-slate-800 font-semibold tracking-tight border-b border-slate-300 pb-2">
             Check-ins from {{ $phone_number }}
         </h2>
 
         @if($latest_check_in)
 
-            <h3 class="text-lg mt-8 font-semibold flex justify-between items-center">
+            <h3 class="text-lg mt-6 font-semibold flex justify-between items-center">
                 <span class="text-slate-800 tracking-tight">
                     Latest
                 </span>
@@ -30,7 +30,7 @@
 
             @if($check_ins->isNotEmpty())
 
-                <h3 class="text-lg mt-8 text-slate-800 font-semibold tracking-tight">
+                <h3 class="text-lg mt-6 text-slate-800 font-semibold tracking-tight">
                     Previous Check-ins
                 </h3>
 
