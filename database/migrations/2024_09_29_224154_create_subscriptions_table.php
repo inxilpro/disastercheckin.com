@@ -16,9 +16,11 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('subscriber')
                 ->foreignIdFor(PhoneNumber::class)
+                ->constrained()
                 ->comment('User subscribing to updates');
             $table->unsignedBigInteger('subscribed_to')
                 ->foreignIdFor(PhoneNumber::class)
+                ->constrained()
                 ->comment('The phone number the user is looking for');
             $table->timestamps();
         });
