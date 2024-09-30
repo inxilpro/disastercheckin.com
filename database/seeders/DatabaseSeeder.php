@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Message;
+use App\Models\CheckIn;
 use App\Models\PhoneNumber;
-use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -18,10 +17,10 @@ class DatabaseSeeder extends Seeder
         $carpet = PhoneNumber::factory()->create([
             'phone' => '+18005882300',
         ]);
-        Message::factory()->create([
+        CheckIn::factory()->create([
             'phone_number_id' => $carpet->id,
         ]);
-        Message::factory()->create([
+        CheckIn::factory()->create([
             'phone_number_id' => $carpet->id,
         ]);
     }

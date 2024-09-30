@@ -5,16 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Propaganistas\LaravelPhone\Casts\E164PhoneNumberCast;
 
+/** @property-read \Propaganistas\LaravelPhone\PhoneNumber $value */
 class PhoneNumber extends Model
 {
     use HasFactory;
 
-    // Note: could cast `phone` here with Laravel-Phone if useful
-    // @see https://github.com/Propaganistas/Laravel-Phone#attribute-casting
-
-    public function messages(): HasMany
+    protected function casts(): array
     {
-        return $this->hasMany(Message::class);
+        return [
+            'value' => E164PhoneNumberCast::class.':US',
+        ];
+    }
+
+    public function check_ins(): HasMany
+    {
+        return $this->hasMany(CheckIn::class);
     }
 }

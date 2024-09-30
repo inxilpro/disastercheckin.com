@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Parser;
+namespace App\Data;
 
 enum SmsCommandType: string
 {

@@ -2,12 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Message;
+use App\Models\CheckIn;
 use App\Models\PhoneNumber;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Message>
+ * @extends Factory<CheckIn>
  */
 class MessageFactory extends Factory
 {

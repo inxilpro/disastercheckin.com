@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Parser;
+namespace App\Data;
 
 class SmsCommand
 {
     public function __construct(
         public SmsCommandType $command,
-        public string $phone_number,
         public string $message,
     ) {}
 }

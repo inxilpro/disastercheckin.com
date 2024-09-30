@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\UserRequestedNotificationsOnNumber;
 use Illuminate\Http\Request;
 
-class SubscribeToPhoneNumber extends Controller
+class SubscribeController extends Controller
 {
     public function __invoke(Request $request)
     {
