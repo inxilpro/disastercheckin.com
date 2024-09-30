@@ -3,18 +3,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light dark">
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
-    >
-    <link rel="stylesheet" href="css/pico.min.css">
-    <title>Disaster Check-In Search</title>
+    <title>Disaster Check-In</title>
+    @vite('resources/css/app.css')
     {{ $head ?? null }}
 </head>
-<body>
-<main class="container">
-    {{ $slot }}
-</main>
+<body class="bg-slate-100 font-sans antialiased">
+<div class="p-6 lg:p-8">
+    <main class="mx-auto max-w-6xl">
+        {{ $slot }}
+    </main>
+</div>
 </body>
 </html>
