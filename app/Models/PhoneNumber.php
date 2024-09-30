@@ -6,6 +6,7 @@ use Glhd\Bits\Database\HasSnowflakes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Cache;
 use Propaganistas\LaravelPhone\Casts\E164PhoneNumberCast;
 use Propaganistas\LaravelPhone\PhoneNumber as PhoneNumberParser;
 
@@ -14,6 +15,11 @@ class PhoneNumber extends Model
 {
     use HasFactory;
     use HasSnowflakes;
+
+    protected static function booted()
+    {
+        static::saved(fn (PhoneNumber $p) => Cache::forget("phone-number-view:{$p->value}"));
+    }
 
     public static function findByValue(string $value, string $country = 'US'): ?static
     {
