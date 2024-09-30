@@ -12,7 +12,7 @@ class SmsParser
     {
         $body = trim($data['Body'] ?? '');
 
-        $lower_body = strtolower(trim($body));
+        $lower_body = strtolower($body);
         $phone_number = $data['From'];
 
         if(str_starts_with($lower_body, 'update')) {
