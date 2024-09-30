@@ -11,8 +11,8 @@
             If you are looking for information on a loved one, they may have checked in with us. We have provided a
             phone
             number to local media where people can send SMS updates about their well-being. You can search for your
-            loved on
-            by your user's phone number below:
+            loved one
+            using their phone number below:
         </p>
     </div>
 
