@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Log;
 use Twilio\Security\RequestValidator;
 
 class TwilioSignatureMiddleware
@@ -16,6 +17,8 @@ class TwilioSignatureMiddleware
         if (App::isLocal() || $this->validator()->validate($signature, $url, $data)) {
             return $next($request);
         }
+
+        Log::warning("Invalid Twilio signature: '{$signature}'");
 
         abort(401, 'Invalid signature.');
     }
