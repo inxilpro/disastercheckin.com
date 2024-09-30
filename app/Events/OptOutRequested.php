@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Data\SmsCommandType;
 use App\Http\Responses\TwilioResponse;
 use Thunk\Verbs\Event;
 
@@ -14,7 +15,6 @@ class OptOutRequested extends Event
 
     public function handle()
     {
-        return TwilioResponse::make()
-            ->message('Any public messages that you have posted will be removed shortly!');
+        return TwilioResponse::forSmsCommand(SmsCommandType::OptOut);
     }
 }

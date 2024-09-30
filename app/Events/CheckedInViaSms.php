@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Data\SmsCommandType;
 use App\Http\Responses\TwilioResponse;
 use App\Models\PhoneNumber;
 use Thunk\Verbs\Event;
@@ -24,7 +25,6 @@ class CheckedInViaSms extends Event
             'body' => $this->update,
         ]);
 
-        return TwilioResponse::make()
-            ->message('Your update has been saved and will be public to anyone who knows your phone number.');
+        return TwilioResponse::forSmsCommand(SmsCommandType::Update);
     }
 }
