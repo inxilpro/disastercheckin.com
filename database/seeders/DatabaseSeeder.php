@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Message;
+use App\Models\PhoneNumber;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,11 +15,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        $carpet = PhoneNumber::factory()->create([
+            'phone' => '+18005882300',
+        ]);
+        Message::factory()->create([
+            'phone_number_id' => $carpet->id,
+        ]);
+        Message::factory()->create([
+            'phone_number_id' => $carpet->id,
         ]);
     }
 }
