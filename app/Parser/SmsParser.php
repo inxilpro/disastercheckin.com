@@ -4,10 +4,6 @@ namespace App\Parser;
 
 class SmsParser
 {
-    /**
-     * @param array $data
-     * @return SmsCommand
-     */
     public static function parse(array $data): SmsCommand
     {
         $body = trim($data['Body'] ?? '');
