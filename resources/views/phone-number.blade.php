@@ -22,7 +22,7 @@
             </h3>
 
             <div
-                class="mt-2 px-4 py-2 ring-1 ring-green-500 rounded-r rounded-bl bg-green-300/30 text-green-900 font-bold shadow-sm">
+                class="mt-2 px-4 py-2 ring-1 ring-green-500 rounded-md bg-green-200/30 text-green-900 font-medium shadow-sm">
                 {{ $latest_check_in->body }}
             </div>
 
