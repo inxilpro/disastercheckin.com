@@ -11,6 +11,7 @@ it('allows checking in via Twilio webhooks', function () {
     ]);
 
     $response->assertStatus(200);
+    $response->assertSeeHtml('<Response>');
     $response->assertSeeHtml('<Message>');
     $response->assertSee('has been saved');
 

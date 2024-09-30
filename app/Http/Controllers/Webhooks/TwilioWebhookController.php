@@ -40,7 +40,9 @@ class TwilioWebhookController extends Controller
     protected function toResponse(MessagingResponse|string $result): Response
     {
         if (is_string($result)) {
-            $result = (new MessagingResponse)->message($result);
+            $message = $result;
+            $result = new MessagingResponse;
+            $result->message($message);
         }
 
         if (App::isLocal()) {
