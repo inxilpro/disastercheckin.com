@@ -31,8 +31,8 @@ class SmsParser
         preg_match('/^\s*(?P<command>'.$prefixes.')?:?\s*(?P<message>.*)\s*$/i', $body, $matches);
 
         return [
-            strtolower($matches['command']),
-            $matches['message'],
+            strtolower($matches['command'] ?? ''),
+            $matches['message'] ?? '',
         ];
     }
 }
