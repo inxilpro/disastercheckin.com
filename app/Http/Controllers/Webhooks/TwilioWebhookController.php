@@ -7,6 +7,7 @@ use App\Data\SmsParser;
 use App\Events\CheckedInViaSms;
 use App\Events\OptOutRequested;
 use App\Events\PhoneNumberQueried;
+use App\Events\SubscribedToPhoneNumberViaSms;
 use App\Events\TwilioWebhookReceived;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -33,6 +34,7 @@ class TwilioWebhookController extends Controller
                 SmsCommandType::Update => CheckedInViaSms::webhook($request, $command),
                 SmsCommandType::Search => PhoneNumberQueried::webhook($request, $command),
                 SmsCommandType::OptOut => OptOutRequested::webhook($request, $command),
+                SmsCommandType::Subscribe => SubscribedToPhoneNumberViaSms::webhook($request, $command),
                 default => 'To share a public update on the disaster check-in website to anyone who knows your phone number, start your message with "UPDATE" (eg. UPDATE I am doing OK!)',
             });
         } catch (EventNotValid $exception) {
