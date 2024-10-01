@@ -3,7 +3,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Disaster Check-In</title>
+    <link rel="shortcut icon" type="image/svg" href="/favicon.svg">
+    <title>Share and check the status of your loved ones | Disaster Check-In</title>
+    <meta name="description" content="Text (828) 888-0440 if you are safe. Search for your loved one’s latest status using their phone number.">
+    <meta property="og:site_name" content="Disaster Check-In">
+    <meta property="og:url" content="{{ config('app.url') }}">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{{ asset('social-share.png') }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
     @vite('resources/css/app.css')
     {{ $head ?? null }}
 </head>
