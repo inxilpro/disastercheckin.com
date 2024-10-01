@@ -2,7 +2,7 @@
 
     <div class="border rounded-md border-amber-600 px-4 py-2.5 bg-yellow-50 shadow-sm">
         <h2 class="text-amber-900">
-            Text this number if you are safe <strong class="whitespace-nowrap">(828) 888-0440</strong>
+            Text this number if you are safe <a href="tel:828-888-0440"><strong class="whitespace-nowrap">(828) 888-0440</strong></a>
         </h2>
     </div>
 
