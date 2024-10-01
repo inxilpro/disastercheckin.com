@@ -28,4 +28,9 @@ enum SmsCommandType: string
      * Future command: check on another person via their phone number
      */
     case Search = 'search';
+
+    /**
+     * User subscribes to another person via their phone number
+     */
+    case Subscribe = 'subscribe';
 }

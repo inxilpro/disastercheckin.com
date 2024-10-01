@@ -19,7 +19,8 @@ it('you can search and include an email for notifications', function () {
     $user = User::where('email', 'john@thunk.gov')->sole();
 
     $subscribed_phone_numbers = $user->subscriptions
-        ->map(fn (Subscription $subscription) => e164($subscription->phone_number));
+        ->pluck('phone_number')
+        ->map(e164(...));
 
     expect($subscribed_phone_numbers)->toHaveCount(1)
         ->first()->toBe('+12024561111');
