@@ -15,6 +15,8 @@ class PhoneNumberQueried extends Event
 
     public static function webhook(Request $request, SmsCommand $command): string
     {
+        // TODO: Account for numbers with spaces :/
+
         $found = static::commit(
             phone_number: str($command->message)
                 ->trim()
