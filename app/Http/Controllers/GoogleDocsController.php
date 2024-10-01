@@ -4,10 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\GoogleDocsService;
+use Illuminate\Support\Facades\Cache;
 
 class GoogleDocsController extends Controller
 {
     public function __invoke(?string $format)
+    {
+        $doc = Cache::remember(
+            "doc-$format",
+            600,
+            fn() => $this->doc($format)
+        );
+
+        return view('docs', [
+            'doc' => $doc,
+        ]);
+    }
+
+    protected function doc($format)
     {
         $format = match ($format) {
             'txt' => 'text/plain',
@@ -17,19 +31,9 @@ class GoogleDocsController extends Controller
             default => 'text/html',
         };
 
-        $pre = match($format) {
-            'md' => true,
-            default => false
-        };
-
-        $doc = GoogleDocsService::get(
+        return GoogleDocsService::get(
             env('GOOGLE_DOCS_ID', '154hYrmMKWNKWIwcTkUP8GhcAn4z4LXnFr2AKMgv3Qik'),
             $format
         );
-
-        return view('docs', [
-            'doc' => $doc,
-            'pre' => $pre
-        ]);
     }
 }
