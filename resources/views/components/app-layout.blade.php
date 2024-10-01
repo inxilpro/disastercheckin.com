@@ -1,7 +1,3 @@
-@props([
-    'head',
-])
-
 <!doctype html>
 <html lang="en">
 <head>
