@@ -16,13 +16,16 @@
                 <span class="text-slate-800 tracking-tight">
                     Latest
                 </span>
-                <span class="font-semibold text-slate-700 text-sm">
+                <span
+                    class="font-semibold text-slate-700 text-sm"
+                    data-timestamp="{{ $latest_check_in->created_at->unix() }}"
+                >
                     {{ $latest_check_in->created_at->diffForHumans() }}
                 </span>
             </h3>
 
             <div
-                class="mt-2 px-4 py-2 ring-1 ring-green-500 rounded-md bg-green-200/30 text-green-900 font-medium shadow-sm">
+                class="mt-2 px-4 py-2 ring-1 ring-green-500 rounded-r-md rounded-bl-md bg-green-200/30 text-green-900 font-medium shadow-sm">
                 {{ $latest_check_in->body }}
             </div>
 
@@ -44,7 +47,10 @@
                     <tbody>
                     @foreach($check_ins as $check_in)
                         <tr>
-                            <td class="font-semibold text-slate-700 py-1 pr-2 whitespace-nowrap align-top pr-2">
+                            <td
+                                class="font-semibold text-slate-700 py-1 pr-2 whitespace-nowrap align-top"
+                                data-timestamp="{{ $check_in->created_at->unix() }}"
+                            >
                                 {{ $check_in->created_at->diffForHumans() }}
                             </td>
                             <td class="py-1 pl-2">
@@ -67,5 +73,19 @@
 
         @endif
     </div>
+
+    <script>
+        document.querySelectorAll('[data-timestamp]')
+            .forEach(function (el) {
+                el.title = new Date(el.dataset.timestamp * 1000).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    hour12: true
+                });
+            });
+    </script>
 
 </x-app-layout>
