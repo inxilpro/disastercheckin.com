@@ -15,7 +15,6 @@
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
     @vite('resources/css/app.css')
-    @vite('resources/js/app.js')
     {{ $head ?? null }}
 </head>
 <body class="m-6 font-sans antialiased bg-slate-100 lg:m-8">
@@ -51,5 +50,8 @@
         </li>
     </ul>
 </footer>
+
+@vite('resources/js/app.js')
+
 </body>
 </html>
