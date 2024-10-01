@@ -21,7 +21,7 @@
 <footer class="mt-8 max-w-xl mx-auto text-right flex justify-center">
     <ul class="text-slate-600 flex gap-4 text-sm">
         <li>
-            <a href="https://twitter.com/intent/tweet?text=Text%20this%20number%20if%20you%20are%20safe%20%28828%29%20888-0440"
+            <a href="https://twitter.com/intent/tweet?text=Text%20this%20number%20if%20you%20are%20safe%20%28980%29%20324-2832"
                class="flex gap-1.5 hover:opacity-70">
                 Spread the word on Twitter
             </a>
