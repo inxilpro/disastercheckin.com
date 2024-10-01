@@ -22,7 +22,10 @@ class GoogleDocsController extends Controller
             default => false
         };
 
-        $doc = GoogleDocsService::get(env('GOOGLE_DOCS_ID'), $format);
+        $doc = GoogleDocsService::get(
+            env('GOOGLE_DOCS_ID', '154hYrmMKWNKWIwcTkUP8GhcAn4z4LXnFr2AKMgv3Qik'),
+            $format
+        );
 
         return view('docs', [
             'doc' => $doc,
