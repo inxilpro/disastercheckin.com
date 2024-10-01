@@ -17,12 +17,18 @@ class PhoneNumberQueried extends Event
     {
         // TODO: Account for numbers with spaces :/
 
+        $phone_number = str($command->message)
+        ->trim()
+        ->explode(' ')
+        ->filter(fn ($word) => phone_number($word)->isValid())
+        ->first() ?? null;
+
+        if ($phone_number === null) {
+            return 'To search for updates from a phone number, send a message like this: (SEARCH 8280001111)';
+        }
+
         $found = static::commit(
-            phone_number: str($command->message)
-                ->trim()
-                ->explode(' ')
-                ->filter(fn ($word) => phone_number($word)->isValid())
-                ->first() ?? '',
+            phone_number: $phone_number
         );
 
         if ($check_in = $found->check_ins()->latest()->first()) {
@@ -31,7 +37,7 @@ class PhoneNumberQueried extends Event
 
         return implode(' ', [
             "We weren’t able to find any updates for {$found->value}. You can subscribe",
-            'to updates at the disaster check-in website.',
+            'to updates at the DisasterCheckin website.',
         ]);
     }
 
