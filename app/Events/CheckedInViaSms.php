@@ -3,6 +3,7 @@
 namespace App\Events;
 
 use App\Data\SmsCommand;
+use App\Jobs\SendSubscribedNotificationsJob;
 use App\Models\PhoneNumber;
 use Illuminate\Http\Request;
 use Thunk\Verbs\Event;
@@ -35,6 +36,9 @@ class CheckedInViaSms extends Event
         $phone_number = PhoneNumber::findByValueOrCreate($this->phone_number);
 
         $phone_number->update(['is_opted_out' => false]);
+
+        SendSubscribedNotificationsJob::dispatch($phone_number)
+            ->delay(120);
 
         return $phone_number->check_ins()->updateOrCreate(
             attributes: ['id' => $this->id],
