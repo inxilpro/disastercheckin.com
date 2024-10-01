@@ -2,11 +2,11 @@
 
     <div class="border rounded-md border-amber-600 px-4 py-2.5 bg-yellow-50 shadow-sm">
         <h2 class="text-amber-900">
-            Text this number if you are safe <a href="sms:+18288880440?body=UPDATE"><strong class="whitespace-nowrap">(828) 888-0440</strong></a>
+            Text this number if you are safe <a href="sms:+18288880440?body=UPDATE"><strong class="whitespace-nowrap">828-888-0440</strong></a>
         </h2>
     </div>
 
-    <div class="prose-sm max-w-lg mt-6">
+    <div class="max-w-lg mt-6 prose-sm">
         <p>
             If you are looking for information on a loved one, they may have checked in with us. We have provided a
             phone
@@ -24,9 +24,10 @@
 
         @csrf
 
-        <div class="max-w-lg">
+        <div class="max-w-lg" x-data>
             <x-input
                 required
+                x-mask="999-999-9999"
                 label="Phone Number"
                 name="phone_number"
                 type="tel"
@@ -34,7 +35,7 @@
                 placeholder="eg. 828-555-1234"
             />
 
-            <div class="mt-4 flex justify-end">
+            <div class="flex justify-end mt-4">
                 <x-button type="submit" size="lg">
                     Search
                 </x-button>
