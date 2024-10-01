@@ -17,7 +17,7 @@ class OptOutRequested extends Event
             payload: $request->all(),
         );
 
-        return __('sms.opt-out');
+        return 'Any updates you have sent will be removed from the disaster check-in website shortly.';
     }
 
     public function __construct(
