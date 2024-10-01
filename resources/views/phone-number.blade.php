@@ -6,18 +6,18 @@
 
     <div class="mt-6">
 
-        <h2 class="text-xl text-slate-800 font-semibold tracking-tight border-b border-slate-300 pb-2">
-            Check-ins from {{ $phone_number }}
+        <h2 class="pb-2 text-xl font-semibold tracking-tight border-b text-slate-800 border-slate-300">
+            Check-ins from <a href="sms:{{ phone_number($phone_number) }}?body=UPDATE">{{ $phone_number }}</a>
         </h2>
 
         @if($latest_check_in)
 
-            <h3 class="text-lg mt-6 font-semibold flex justify-between items-center">
-                <span class="text-slate-800 tracking-tight">
+            <h3 class="flex items-center justify-between mt-6 text-lg font-semibold">
+                <span class="tracking-tight text-slate-800">
                     Latest
                 </span>
                 <span
-                    class="font-semibold text-slate-700 text-sm"
+                    class="text-sm font-semibold text-slate-700"
                     data-timestamp="{{ $latest_check_in->created_at->unix() }}"
                 >
                     {{ $latest_check_in->created_at->diffForHumans() }}
@@ -25,7 +25,7 @@
             </h3>
 
             <div
-                class="mt-2 px-4 py-2 ring-1 ring-green-500 rounded-r-md rounded-bl-md bg-green-200/30 text-green-900 font-medium shadow-sm">
+                class="px-4 py-2 mt-2 font-medium text-green-900 shadow-sm ring-1 ring-green-500 rounded-r-md rounded-bl-md bg-green-200/30">
                 {{ $latest_check_in->body }}
             </div>
 
@@ -33,11 +33,11 @@
 
             @if($check_ins->isNotEmpty())
 
-                <h3 class="text-lg mt-6 text-slate-800 font-semibold tracking-tight">
+                <h3 class="mt-6 text-lg font-semibold tracking-tight text-slate-800">
                     Previous Check-ins
                 </h3>
 
-                <table class="text-sm mt-2">
+                <table class="mt-2 text-sm">
                     <thead class="sr-only">
                     <tr>
                         <th>Time</th>
@@ -48,7 +48,7 @@
                     @foreach($check_ins as $check_in)
                         <tr>
                             <td
-                                class="font-semibold text-slate-700 py-1 pr-2 whitespace-nowrap align-top"
+                                class="py-1 pr-2 font-semibold align-top text-slate-700 whitespace-nowrap"
                                 data-timestamp="{{ $check_in->created_at->unix() }}"
                             >
                                 {{ $check_in->created_at->diffForHumans() }}
