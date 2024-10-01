@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Disaster Check-In</title>
+    <meta property="og:image" content="{{ asset('static/og-image.jpg') }}?v=1.0.0">
     @vite('resources/css/app.css')
     {{ $head ?? null }}
 </head>
