@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/svg" href="/favicon.svg">
     <title>Share and check the status of your loved ones | Disaster Check-In</title>
-    <meta name="description" content="Text (828) 888-0440 if you are safe. Search for your loved one’s latest status using their phone number.">
+    <meta name="description"
+          content="Text (828) 888-0440 if you are safe. Search for your loved one’s latest status using their phone number.">
     <meta property="og:site_name" content="Disaster Check-In">
     <meta property="og:url" content="{{ config('app.url') }}">
     <meta property="og:type" content="website">
@@ -32,19 +33,19 @@
         <li>
             <a href="https://twitter.com/intent/tweet?text=Text%20this%20number%20if%20you%20are%20safe%20%28828%29%20888-0440"
                class="flex gap-1.5 hover:opacity-70">
-               <div class="flex gap-2">
-                    <img src="{{ asset('/icons/twitter.svg') }}" alt="Spread the word on Twitter" width="24" />
+                <div class="flex gap-2">
+                    <img src="{{ asset('/icons/twitter.svg') }}" alt="Spread the word on Twitter" width="24"/>
                     Spread the word
-               </div>
+                </div>
             </a>
         </li>
         <li>
-            <a href="https://app.cartamaps.com/share/21920abf-7a5a-4691-a03a-56a6c52198ac"
+            <a target="_blank" href="https://app.cartamaps.com/share/21920abf-7a5a-4691-a03a-56a6c52198ac"
                class="flex gap-1.5 hover:opacity-70">
-               <div class="flex gap-2">
-                    <img src="{{ asset('/icons/road-icon.svg') }}" alt="Check road closures" width="24" />
+                <div class="flex gap-2">
+                    <img src="{{ asset('/icons/road-icon.svg') }}" alt="Check road closures" width="24"/>
                     Check Road Closures
-               </div>
+                </div>
             </a>
         </li>
     </ul>
