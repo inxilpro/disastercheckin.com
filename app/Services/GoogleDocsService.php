@@ -16,7 +16,7 @@ class GoogleDocsService {
         $client->setApplicationName("Laravel Google Docs");
         $client->setDeveloperKey(
             // this is a temporary key and i will kill it soon.
-            env('GOOGLE_API_KEY', '154hYrmMKWNKWIwcTkUP8GhcAn4z4LXnFr2AKMgv3Qik')
+            env('GOOGLE_API_KEY', 'AIzaSyANhyxykWyAejok8lE9InJFG6lGm6Ow8QQ')
         );
 
         $this->drive = new Drive($client);
