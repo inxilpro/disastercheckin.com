@@ -19,7 +19,7 @@ class CheckedInViaSms extends Event
 
         return implode(' ', [
             'Your update has been saved. Anyone with your phone number',
-            'can find your message at the disaster check-in website. Send "CANCEL"',
+            'can find it at the DisasterCheckin site or by texting SEARCH. Send "CANCEL"',
             'to remove all your updates.',
         ]);
     }
