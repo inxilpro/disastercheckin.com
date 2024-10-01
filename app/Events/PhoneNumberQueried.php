@@ -31,7 +31,7 @@ class PhoneNumberQueried extends Event
 
         return implode(' ', [
             "We weren’t able to find any updates for {$found->value}. You can subscribe",
-            'to updates at disastercheckin.com.',
+            'to updates at the disaster check-in site.',
         ]);
     }
 
