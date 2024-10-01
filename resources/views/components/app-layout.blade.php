@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Disaster Check-In</title>
     @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
     {{ $head ?? null }}
 </head>
-<body class="bg-slate-100 font-sans antialiased m-6 lg:m-8">
+<body class="m-6 font-sans antialiased bg-slate-100 lg:m-8">
 
-<div class="mx-auto max-w-xl bg-white py-6 lg:p-8 p-6 flex-1 shadow-sm border border-slate-300 rounded-md">
+<div class="flex-1 max-w-xl p-6 py-6 mx-auto bg-white border rounded-md shadow-sm lg:p-8 border-slate-300">
     <header>
         <x-logo/>
     </header>
@@ -18,8 +19,8 @@
     </main>
 </div>
 
-<footer class="mt-8 max-w-xl mx-auto text-right flex justify-center">
-    <ul class="text-slate-600 flex gap-4 text-sm">
+<footer class="flex justify-center max-w-xl mx-auto mt-8 text-right">
+    <ul class="flex gap-4 text-sm text-slate-600">
         <li>
             <a href="https://twitter.com/intent/tweet?text=Text%20this%20number%20if%20you%20are%20safe%20%28828%29%20888-0440"
                class="flex gap-1.5 hover:opacity-70">

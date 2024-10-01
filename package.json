@@ -14,5 +14,9 @@
         "postcss": "^8.4.47",
         "tailwindcss": "^3.4.13",
         "vite": "^5.0"
+    },
+    "dependencies": {
+        "@alpinejs/mask": "^3.14.1",
+        "alpinejs": "^3.14.1"
     }
 }

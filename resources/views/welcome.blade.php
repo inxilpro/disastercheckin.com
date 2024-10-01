@@ -6,7 +6,7 @@
         </h2>
     </div>
 
-    <div class="prose-sm max-w-lg mt-6">
+    <div class="max-w-lg mt-6 prose-sm">
         <p>
             If you are looking for information on a loved one, they may have checked in with us. We have provided a
             phone
@@ -24,9 +24,10 @@
 
         @csrf
 
-        <div class="max-w-lg">
+        <div class="max-w-lg" x-data>
             <x-input
                 required
+                x-mask="999-999-9999"
                 label="Phone Number"
                 name="phone_number"
                 type="tel"
@@ -34,7 +35,7 @@
                 placeholder="eg. 828-555-1234"
             />
 
-            <div class="mt-4 flex justify-end">
+            <div class="flex justify-end mt-4">
                 <x-button type="submit" size="lg">
                     Search
                 </x-button>
