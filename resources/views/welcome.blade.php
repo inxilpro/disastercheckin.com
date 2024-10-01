@@ -2,7 +2,7 @@
 
     <div class="border rounded-md border-amber-600 px-4 py-2.5 bg-yellow-50 shadow-sm">
         <h2 class="text-amber-900">
-            Text this number if you are safe <strong class="whitespace-nowrap">(980) 324-2832</strong>
+            Text this number if you are safe <strong class="whitespace-nowrap">(828) 888-0440</strong>
         </h2>
     </div>
 
@@ -11,8 +11,8 @@
             If you are looking for information on a loved one, they may have checked in with us. We have provided a
             phone
             number to local media where people can send SMS updates about their well-being. You can search for your
-            loved on
-            by your user's phone number below:
+            loved one
+            using their phone number below:
         </p>
     </div>
 
