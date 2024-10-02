@@ -33,6 +33,7 @@
                 type="tel"
                 inputmode="tel"
                 placeholder="eg. 828-555-1234"
+                autofocus
             />
 
             <div class="flex justify-end mt-4">
