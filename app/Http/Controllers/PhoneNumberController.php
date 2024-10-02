@@ -3,11 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Models\PhoneNumber;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Contracts\Database\Query\Builder;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Closure;
 
 class PhoneNumberController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function (Request $request, Closure $next): Response {
+            // Allow 10 requests every 30 seconds
+            $response = RateLimiter::attempt(
+                key: $request->route()->getName(),
+                maxAttempts: 10,
+                callback: fn() => $next($request),
+                decaySeconds: 30,
+            );
+
+            if (!$response) {
+                return response()->view('phone-number-rate-limited');
+            }
+
+            return $response;
+        });
+    }
+
     public function __invoke(string $phone_number)
     {
         $e164 = e164($phone_number);

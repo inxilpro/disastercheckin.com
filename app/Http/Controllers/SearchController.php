@@ -13,8 +13,6 @@ class SearchController extends Controller
             phone_number: $request->validated('phone_number'),
         );
 
-        // TODO: Rate limit this
-
         return to_route('phone-number', $phone_number);
     }
 }
