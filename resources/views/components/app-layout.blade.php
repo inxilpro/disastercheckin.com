@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/svg" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
     <title>Share and check the status of your loved ones | Disaster Check-In</title>
     <meta name="description"
           content="Text (828) 888-0440 if you are safe. Search for your loved one’s latest status using their phone number.">
