@@ -32,7 +32,7 @@ class SendSubscribedNotificationsJob implements ShouldQueue, ShouldBeUnique
 
     public function handle(): void
     {
-        $check_ins = $this->phone_number->not_notified_check_ins()->get();
+        $check_ins = $this->phone_number->not_notified_check_ins()->limit(120)->get();
 
         if ($check_ins->count()) {
             $this->phone_number->subscriptions()

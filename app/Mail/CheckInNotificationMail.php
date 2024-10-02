@@ -32,7 +32,7 @@ class CheckInNotificationMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.check-in-notification',
+            markdown: 'emails.check-in-notification',
         );
     }
 
