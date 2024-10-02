@@ -32,9 +32,9 @@ test('Update command is parsed', function () {
     expect($parsed->command)->toBe(SmsCommandType::Update)
         ->and($parsed->message)->toBe("I'm doing alright");
 
-    $parsed = SmsParser::parse("\n\n\nUPDATE \n : \n I'm\ndoing\nalright \n");
+    $parsed = SmsParser::parse("\n\n\nUPDATE: \n I'm\ndoing\n\nalright \n");
     expect($parsed->command)->toBe(SmsCommandType::Update)
-        ->and($parsed->message)->toBe("I'm\ndoing\nalright");
+        ->and($parsed->message)->toBe("I'm\ndoing\n\nalright");
 })->group('parser');
 
 test('Help command is parsed', function () {
