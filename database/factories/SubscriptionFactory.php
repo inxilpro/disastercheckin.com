@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\PhoneNumber;
 use App\Models\Subscription;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,8 +20,8 @@ class SubscriptionFactory extends Factory
     public function definition(): array
     {
         return [
-            'subscriber' => PhoneNumber::factory(),
-            'subscribed_to' => PhoneNumber::factory(),
+            'user_id' => User::first(),
+            'phone_number_id' => PhoneNumber::first(),
         ];
     }
 }
