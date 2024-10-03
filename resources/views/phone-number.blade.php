@@ -26,7 +26,7 @@
 
             <div
                 class="px-4 py-2 mt-2 font-medium text-green-900 shadow-sm ring-1 ring-green-500 rounded-r-md rounded-bl-md bg-green-200/30">
-                {{ $latest_check_in->body }}
+                {{ $latest_check_in->html_body }}
             </div>
 
             <x-subscribe-form :phone_number="$phone_number"/>
@@ -54,7 +54,7 @@
                                 {{ $check_in->created_at->diffForHumans() }}
                             </td>
                             <td class="py-1 pl-2">
-                                {{ $check_in->body }}
+                                {{ $check_in->html_body }}
                             </td>
                         </tr>
                     @endforeach

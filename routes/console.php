@@ -11,10 +11,11 @@ use Propaganistas\LaravelPhone\PhoneNumber;
 
 use function Laravel\Prompts\note;
 use function Laravel\Prompts\text;
+use function Laravel\Prompts\textarea;
 
 Artisan::command('sms', function () {
     $raw_phone = text('Phone number', default: '202-456-1111', required: true, validate: fn ($value) => (new PhoneNumber($value, 'US'))->isValid() ? null : 'Invalid phone number');
-    $raw_body = text('Message body', required: true, validate: fn ($value) => mb_strlen($value) <= 160 ? null : 'Message must be under 160 chars');
+    $raw_body = textarea('Message body', required: true, validate: fn ($value) => mb_strlen($value) <= 160 ? null : 'Message must be under 160 chars');
 
     $synthetic_payload = ['raw_phone' => $raw_phone, 'raw_body' => $raw_body, 'synthetic' => true];
 
