@@ -28,4 +28,9 @@ enum SmsCommandType: string
      * Future command: check on another person via their phone number
      */
     case Search = 'search';
+
+     /**
+     * Resource submission command
+     */
+    case Fyi = 'fyi';
 }

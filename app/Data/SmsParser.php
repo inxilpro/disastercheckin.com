@@ -4,7 +4,7 @@ namespace App\Data;
 
 class SmsParser
 {
-    protected const PREFIXES = ['update', 'search', 'help', 'stop', 'cancel'];
+    protected const PREFIXES = ['update', 'search', 'help', 'stop', 'cancel', 'fyi'];
 
     public static function parse(string $body): SmsCommand
     {
@@ -15,6 +15,7 @@ class SmsParser
                 'update' => SmsCommandType::Update,
                 'search' => SmsCommandType::Search,
                 'help' => SmsCommandType::Help,
+                'fyi' => SmsCommandType::Fyi,
                 'stop', 'cancel' => SmsCommandType::OptOut,
                 default => SmsCommandType::Invalid,
             },
