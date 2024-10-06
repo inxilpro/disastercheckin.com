@@ -10,12 +10,17 @@
         "hirethunk/verbs": "^0.6.2",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
+        "livewire/flux": "^1.0",
+        "livewire/flux-pro": "^1.0",
+        "livewire/livewire": "^3.4",
+        "livewire/volt": "^1.0",
         "monicahq/laravel-cloudflare": "^3.7",
         "propaganistas/laravel-phone": "^5.3",
         "twilio/sdk": "^8.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
+        "laravel/breeze": "^2.2",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",
         "mockery/mockery": "^1.6",
@@ -67,5 +72,11 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": {
+        "flux-pro": {
+            "type": "composer",
+            "url": "https://composer.fluxui.dev"
+        }
+    }
 }

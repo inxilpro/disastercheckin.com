@@ -37,5 +37,5 @@ enum SmsCommandType: string
     /**
      * Request a refill of a water barrel
      */
-    case WaterRefill = 'water-refill';
+    case WaterRefill = 'refill';
 }

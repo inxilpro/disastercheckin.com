@@ -17,10 +17,15 @@ return new class extends Migration
             $table->string('address_street');
             $table->string('address_city');
             $table->string('address_state');
-            $table->string('zip');
+            $table->string('address_zip');
 
             $table->timestamp('refill_requested_at')->nullable();
-            $table->foreignIdFor(PhoneNumber::class, 'refill_requested_by')->nullable();
+            $table->string('refill_requested_by')->nullable();
+
+            $table->timestamp('refilled_at')->nullable();
+            $table->string('refilled_by')->nullable();
+            
+            $table->timestamp('decommissioned_at')->nullable();
 
             $table->timestamps();
         });

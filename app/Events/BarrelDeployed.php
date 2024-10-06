@@ -21,15 +21,6 @@ class BarrelDeployed extends Event
     public string $address_state;
     public string $address_zip;
 
-    public static function webhook(Request $request, SmsCommand $command): string
-    {
-        $barrel_code = str($command->message);
-
-        dd($barrel_code);
-
-        return 'foobar';
-    }
-
     public function apply(BarrelState $barrel)
     {
         $barrel->code = $this->code;
@@ -49,7 +40,7 @@ class BarrelDeployed extends Event
                 'address_street' => $this->address_street,
                 'address_city' => $this->address_city,
                 'address_state' => $this->address_state,
-                'zip' => $this->address_zip,
+                'address_zip' => $this->address_zip,
                 'refill_requested_at' => null,
                 'refill_requested_by' => null,
             ]

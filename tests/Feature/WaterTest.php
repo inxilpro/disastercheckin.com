@@ -14,7 +14,7 @@ beforeEach(function () {
     Verbs::commitImmediately();
 });
 
-it('allows requesting a refill via sms', function () {
+it('creates a Barrel when the event is fired', function () {
     $e = BarrelDeployed::fire(
         code: '12345',
         address_street: '12 Erwin Hills Rd.',
@@ -49,17 +49,11 @@ it('allows requesting a refill via sms', function () {
 
     $response = post(route('webhooks.twilio'), [
         'From' => '+12024561111',
-        'Body' => 'water refill 12345',
+        'Body' => 'refill: 12345',
     ]);
 
     $response->assertStatus(200);
     $response->assertSeeHtml('<Response>');
     $response->assertSeeHtml('<Message>');
-    $response->assertSee('has been saved');
-
-    $phone_number = PhoneNumber::findByValueOrFail('+12024561111');
-
-    $check_in = $phone_number->check_ins()->latest()->first();
-
-    expect($check_in->body)->toBe('We are safe and have enough food and water!');
+    $response->assertSee('Your refill request has been passed on to our volunteers! We will text you when your barrel is refilled.');
 });

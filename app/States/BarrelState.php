@@ -2,8 +2,9 @@
 
 namespace App\States;
 
-use Illuminate\Support\Carbon;
+use App\Models\Barrel;
 use Thunk\Verbs\State;
+use Illuminate\Support\Carbon;
 
 class BarrelState extends State
 {
@@ -15,5 +16,15 @@ class BarrelState extends State
     public string $address_zip;
 
     public ?Carbon $refill_requested_at = null;
-    public ?int $refill_requested_by = null;
+    public ?string $refill_requested_by = null;
+
+    public ?Carbon $refilled_at = null;
+    public ?string $refilled_by = null;
+    
+    public ?Carbon $decommissioned_at = null;
+
+    public function model()
+    {
+        return Barrel::find($this->id);
+    }
 }
