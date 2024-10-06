@@ -68,11 +68,6 @@ class TwilioWebhookController extends Controller
             Log::info("Sending: {$result}");
         }
 
-        dd(response(
-            content: (string) $result,
-            headers: ['Content-Type' => 'text/xml'],
-        ));
-
         return response(
             content: (string) $result,
             headers: ['Content-Type' => 'text/xml'],
