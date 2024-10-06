@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Thunk\Verbs\Exceptions\EventNotValid;
@@ -28,7 +29,13 @@ class TwilioWebhookController extends Controller
 
         if ($command->command === SmsCommandType::Refill) {
             // This command will be handled by the BeWellAVL app and should do nothing in this app.
-            return;
+
+            $response = Http::post('https://bewell.coulb.com/api/webhooks/twilio', [
+                'From' => $request->input('From'),
+                'Body' => $request->input('Body'),
+            ]);
+
+            return $response->body();
         }
 
         Log::info("Received {$command} from {$phone_number}");
