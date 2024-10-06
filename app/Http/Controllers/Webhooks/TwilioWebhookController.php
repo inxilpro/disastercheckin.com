@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Webhooks;
 
 use App\Data\SmsCommandType;
 use App\Data\SmsParser;
+use App\Events\BarrelRefillRequested;
 use App\Events\CheckedInViaSms;
 use App\Events\OptOutRequested;
 use App\Events\PhoneNumberQueried;
@@ -32,6 +33,8 @@ class TwilioWebhookController extends Controller
             return $this->toResponse(match ($command->command) {
                 SmsCommandType::Update => CheckedInViaSms::webhook($request, $command),
                 SmsCommandType::Search => PhoneNumberQueried::webhook($request, $command),
+                // SmsCommandType::WaterInfo => BarrelInfo::webhook($request, $command),
+                SmsCommandType::WaterRefill => BarrelRefillRequested::webhook($request, $command),
                 SmsCommandType::OptOut => OptOutRequested::webhook($request, $command),
                 default => 'To send updates on DisasterCheckin site to anyone who knows your number, start your msg with "UPDATE" (UPDATE I am OK) SEARCH to find others (SEARCH 8285550000)',
             });
@@ -42,6 +45,10 @@ class TwilioWebhookController extends Controller
 
     protected function toResponse(MessagingResponse|string $result): Response
     {
+        if (config('running_fake_sms_command', false)) {
+            dd($result);
+        }
+
         if (is_string($result)) {
             $message = $result;
             $result = new MessagingResponse;

@@ -28,4 +28,14 @@ enum SmsCommandType: string
      * Future command: check on another person via their phone number
      */
     case Search = 'search';
+
+    /**
+     * Get info on water barrels
+     */
+    case WaterInfo = 'water-info';
+
+    /**
+     * Request a refill of a water barrel
+     */
+    case WaterRefill = 'refill';
 }
