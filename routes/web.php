@@ -11,7 +11,9 @@ use App\Http\Controllers\PhoneNumberController;
 
 Route::post('/search', SearchController::class)->name('search');
 Route::get('/stats', AnalyticsController::class);
+
 Route::get('/events', fn () => VerbEvent::query()->count());
+
 Route::get('/docs/{format?}', GoogleDocsController::class);
  
 
