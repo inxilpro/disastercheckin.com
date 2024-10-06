@@ -32,6 +32,8 @@ class TwilioWebhookController extends Controller
             return $this->toResponse(match ($command->command) {
                 SmsCommandType::Update => CheckedInViaSms::webhook($request, $command),
                 SmsCommandType::Search => PhoneNumberQueried::webhook($request, $command),
+                SmsCommandType::WaterInfo => PhoneNumberQueried::webhook($request, $command),
+                SmsCommandType::WaterRefill => PhoneNumberQueried::webhook($request, $command),
                 SmsCommandType::OptOut => OptOutRequested::webhook($request, $command),
                 default => 'To send updates on DisasterCheckin site to anyone who knows your number, start your msg with "UPDATE" (UPDATE I am OK) SEARCH to find others (SEARCH 8285550000)',
             });

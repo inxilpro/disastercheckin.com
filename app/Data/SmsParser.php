@@ -15,6 +15,8 @@ class SmsParser
                 'update' => SmsCommandType::Update,
                 'search' => SmsCommandType::Search,
                 'help' => SmsCommandType::Help,
+                'water' => SmsCommandType::WaterInfo,
+                'water refill' => SmsCommandType::WaterRefill,
                 'stop', 'cancel' => SmsCommandType::OptOut,
                 default => SmsCommandType::Invalid,
             },
