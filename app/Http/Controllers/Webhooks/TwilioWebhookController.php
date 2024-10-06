@@ -54,15 +54,15 @@ class TwilioWebhookController extends Controller
 
     protected function toResponse(MessagingResponse|string $result): Response
     {
-        if(config('running_fake_sms_command')) {
+        if(config('running_fake_sms_command', false)) {
             dd($result);
         }
 
-        if (is_string($result)) {
-            $message = $result;
-            $result = new MessagingResponse;
-            $result->message($message);
-        }
+        // if (is_string($result)) {
+        //     $message = $result;
+        //     $result = new MessagingResponse;
+        //     $result->message($message);
+        // }
 
         if (App::isLocal()) {
             Log::info("Sending: {$result}");
