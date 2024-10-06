@@ -14,7 +14,6 @@ Route::get('/stats', AnalyticsController::class);
 Route::get('/docs/{format?}', GoogleDocsController::class)->name('docs');
 
 Route::get('water', BarrelsTable::class)->name('water');
- 
 
 Route::get('/{phone_number}', PhoneNumberController::class)
     ->name('phone-number')
@@ -22,12 +21,12 @@ Route::get('/{phone_number}', PhoneNumberController::class)
 
 Route::post('/subscribe', SubscribeController::class)->name('subscribe');
 
-// Route::view('dashboard', 'dashboard')
-// ->middleware(['auth', 'verified'])
-// ->name('dashboard');
+Route::view('dashboard', 'dashboard')
+->middleware(['auth', 'verified'])
+->name('dashboard');
 
-// Route::view('profile', 'profile')
-// ->middleware(['auth'])
-// ->name('profile');
+Route::view('profile', 'profile')
+->middleware(['auth'])
+->name('profile');
 
-// require __DIR__.'/auth.php';
+require __DIR__.'/auth.php';
