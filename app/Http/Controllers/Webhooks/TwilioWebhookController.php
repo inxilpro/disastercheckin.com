@@ -35,7 +35,7 @@ class TwilioWebhookController extends Controller
                 'Body' => $request->input('Body'),
             ]);
 
-            return $response->body();
+            return $this->toResponse($response->body());
         }
 
         Log::info("Received {$command} from {$phone_number}");
@@ -67,6 +67,11 @@ class TwilioWebhookController extends Controller
         if (App::isLocal()) {
             Log::info("Sending: {$result}");
         }
+
+        dd(response(
+            content: (string) $result,
+            headers: ['Content-Type' => 'text/xml'],
+        ));
 
         return response(
             content: (string) $result,
