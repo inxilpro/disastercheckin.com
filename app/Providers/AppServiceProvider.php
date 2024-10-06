@@ -26,12 +26,10 @@ class AppServiceProvider extends ServiceProvider
             file_put_contents($db_file, '');
         }
 
-        dump(file_exists($db_file));
-
         config([
             'app.debug' => true,
             'database.default' => 'sqlite',
-            'database.connections.sqlite.database' => 'database/disaster.sqlite'
+            'database.connections.sqlite.database' => database_path('disaster.sqlite'),
         ]);
 
         Artisan::call('migrate');
