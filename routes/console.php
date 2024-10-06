@@ -5,6 +5,7 @@ use App\Data\SmsParser;
 use App\Events\CheckedInViaSms;
 use App\Events\OptOutRequested;
 use App\Events\PhoneNumberQueried;
+use App\Events\SubmittedFyi;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schedule;
 use Propaganistas\LaravelPhone\PhoneNumber;
@@ -33,6 +34,11 @@ Artisan::command('sms', function () {
         ),
         SmsCommandType::OptOut => OptOutRequested::commit(
             phone_number: $phone_number,
+            payload: $synthetic_payload,
+        ),
+        SmsCommandType::Fyi => SubmittedFyi::commit(
+            phone_number: $phone_number,
+            message: $command->message,
             payload: $synthetic_payload,
         ),
         default => 'Please start your message with the word "UPDATE" (eg. UPDATE I am doing OK!)',
