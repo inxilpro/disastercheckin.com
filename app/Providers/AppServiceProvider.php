@@ -4,8 +4,11 @@ namespace App\Providers;
 
 use App\Models\PhoneNumber;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+
+use function Pest\Laravel\artisan;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,6 +33,8 @@ class AppServiceProvider extends ServiceProvider
             'database.default' => 'sqlite',
             'database.connections.sqlite.database' => 'database/disaster.sqlite'
         ]);
+
+        Artisan::call('migrate');
 
         Blade::stringable(PhoneNumber::class, fn (PhoneNumber $phone_number) => $phone_number->value->formatNational());
 
