@@ -17,11 +17,7 @@ class CheckedInViaSms extends Event
             payload: $request->all(),
         );
 
-        return implode(' ', [
-            'Your update has been saved. Anyone with your phone number',
-            'can find it at the DisasterCheckin site or by texting SEARCH. Send "CANCEL"',
-            'to remove all your updates.',
-        ]);
+        return __('sms.check-in-received');
     }
 
     public function __construct(

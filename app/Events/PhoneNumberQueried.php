@@ -35,17 +35,14 @@ class PhoneNumberQueried extends Event
             return Str::limit("[{$check_in->created_at->diffForHumans()}] {$check_in->body}", 160);
         }
 
-        return implode(' ', [
-            "We weren’t able to find any updates for {$found->value}. You can subscribe",
-            'to updates at the DisasterCheckin website.',
-        ]);
+        return __('sms.search.not-found');
     }
 
     public function validate()
     {
         $this->assert(
             assertion: phone_number($this->phone_number)->isValid(),
-            message: 'The phone number you searched for does not appear to be valid.',
+            message: __('sms.search.invalid'),
         );
     }
 

@@ -33,7 +33,7 @@ class TwilioWebhookController extends Controller
                 SmsCommandType::Update => CheckedInViaSms::webhook($request, $command),
                 SmsCommandType::Search => PhoneNumberQueried::webhook($request, $command),
                 SmsCommandType::OptOut => OptOutRequested::webhook($request, $command),
-                default => 'To send updates on DisasterCheckin site to anyone who knows your number, start your msg with "UPDATE" (UPDATE I am OK) SEARCH to find others (SEARCH 8285550000)',
+                default => __('sms.info'),
             });
         } catch (EventNotValid $exception) {
             return $this->toResponse(Str::limit($exception->getMessage(), 160));
