@@ -58,11 +58,11 @@ class TwilioWebhookController extends Controller
             dd($result);
         }
 
-        // if (is_string($result)) {
-        //     $message = $result;
-        //     $result = new MessagingResponse;
-        //     $result->message($message);
-        // }
+        if (is_string($result)) {
+            $message = $result;
+            $result = new MessagingResponse;
+            $result->message($message);
+        }
 
         if (App::isLocal()) {
             Log::info("Sending: {$result}");
