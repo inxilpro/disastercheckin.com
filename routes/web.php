@@ -1,5 +1,6 @@
 <?php
 
+use Thunk\Verbs\Models\VerbEvent;
 use App\Services\GoogleDocsService;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\PhoneNumberController;
 
 Route::post('/search', SearchController::class)->name('search');
 Route::get('/stats', AnalyticsController::class);
+Route::get('/events', fn () => VerbEvent::query()->count());
 Route::get('/docs/{format?}', GoogleDocsController::class);
  
 

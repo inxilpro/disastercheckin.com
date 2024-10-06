@@ -14,7 +14,6 @@ class AnalyticsController extends Controller
 {
     public function __invoke()
     {
-        return VerbEvent::query()->count();
         return view('stats', [
             'total_phone_numbers' => PhoneNumber::query()->count(),
             'stats_phone_numbers' => $this->aggregate(PhoneNumber::query()),
