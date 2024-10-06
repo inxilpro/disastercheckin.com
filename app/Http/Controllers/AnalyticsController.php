@@ -8,6 +8,7 @@ use Carbon\CarbonPeriod;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use Thunk\Verbs\Models\VerbEvent;
 
 class AnalyticsController extends Controller
 {

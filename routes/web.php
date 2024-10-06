@@ -31,5 +31,3 @@ Route::post('/subscribe', SubscribeController::class)->name('subscribe');
 // ->name('profile');
 
 // require __DIR__.'/auth.php';
-
-

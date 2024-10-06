@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Cache;
 
 class GoogleDocsController extends Controller
 {
-    public function __invoke(?string $format = 'html')
+    public function __invoke(?string $format)
     {
         $doc = Cache::remember(
             "doc-$format",
