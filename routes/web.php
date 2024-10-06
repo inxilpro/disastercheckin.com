@@ -10,7 +10,7 @@ use App\Http\Controllers\PhoneNumberController;
 
 Route::post('/search', SearchController::class)->name('search');
 Route::get('/stats', AnalyticsController::class);
-Route::get('/docs/{format?}', GoogleDocsController::class)->name('docs');
+Route::get('/docs/{format?}', GoogleDocsController::class);
  
 
 
