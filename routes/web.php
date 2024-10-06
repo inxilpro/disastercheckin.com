@@ -14,7 +14,6 @@ Route::get('/stats', AnalyticsController::class);
 Route::get('/docs/{format?}', GoogleDocsController::class)->name('docs');
 
 Route::get('water', BarrelsTable::class)->name('water');
- 
 
 Route::get('/{phone_number}', PhoneNumberController::class)
     ->name('phone-number')
