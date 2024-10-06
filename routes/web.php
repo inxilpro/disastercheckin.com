@@ -15,8 +15,6 @@ Route::get('/stats', AnalyticsController::class);
 Route::get('/events', fn () => VerbEvent::query()->count());
 
 Route::get('/docs/{format?}', GoogleDocsController::class);
- 
-
 
 Route::get('/{phone_number}', PhoneNumberController::class)
     ->name('phone-number')

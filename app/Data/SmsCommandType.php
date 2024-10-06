@@ -28,4 +28,9 @@ enum SmsCommandType: string
      * Future command: check on another person via their phone number
      */
     case Search = 'search';
+
+    /**
+     * This command should do nothing as the BeWellAVL app will handle it
+     */
+    case Refill = 'refill';
 }

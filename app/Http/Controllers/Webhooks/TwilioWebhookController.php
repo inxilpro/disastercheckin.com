@@ -26,6 +26,11 @@ class TwilioWebhookController extends Controller
         $phone_number = $request->input('From');
         $command = SmsParser::parse($request->input('Body'));
 
+        if ($command->command === SmsCommandType::Refill) {
+            // This command will be handled by the BeWellAVL app and should do nothing in this app.
+            return;
+        }
+
         Log::info("Received {$command} from {$phone_number}");
 
         try {
