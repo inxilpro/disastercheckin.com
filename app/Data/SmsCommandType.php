@@ -33,4 +33,9 @@ enum SmsCommandType: string
      * This command should do nothing as the BeWellAVL app will handle it
      */
     case Refill = 'refill';
+
+    /**
+     * This command should do nothing as the BeWellAVL app will handle it
+     */
+    case Filled = 'filled';
 }
