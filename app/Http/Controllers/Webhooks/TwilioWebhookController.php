@@ -27,8 +27,11 @@ class TwilioWebhookController extends Controller
         $phone_number = $request->input('From');
         $command = SmsParser::parse($request->input('Body'));
 
-        if ($command->command === SmsCommandType::Refill) {
-            // This command will be handled by the BeWellAVL app and should do nothing in this app.
+        if (
+            $command->command === SmsCommandType::Refill ||
+            $command->command === SmsCommandType::Filled
+        ) {
+            // These commands will be handled by the BeWellAVL app and should do nothing in this app.
 
             $response = Http::post('https://bewell.coulb.com/api/webhooks/twilio', [
                 'From' => $request->input('From'),
