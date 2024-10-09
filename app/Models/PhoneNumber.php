@@ -49,6 +49,18 @@ class PhoneNumber extends Model
         return $this->hasMany(CheckIn::class)->chaperone('phone_number');
     }
 
+    public function not_notified_check_ins(): HasMany
+    {
+        return $this->hasMany(CheckIn::class)
+            ->chaperone('phone_number')
+            ->whereNull('notifications_sent_at');
+    }
+
+    public function subscriptions(): HasMany
+    {
+        return $this->hasMany(Subscription::class);
+    }
+
     public function getRouteKeyName()
     {
         return 'value';
