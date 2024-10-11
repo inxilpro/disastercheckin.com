@@ -15,6 +15,7 @@ return [
     */
 
     'twilio' => [
+        'sid' => env('TWILIO_SID', ''),
         'auth_tokens' => explode(',', env('TWILIO_AUTH_TOKENS', env('TWILIO_AUTH_TOKEN', ''))),
     ],
 
